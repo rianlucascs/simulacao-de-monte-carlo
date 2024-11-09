@@ -20,13 +20,11 @@ class Grafico:
     def grafico2(self):
         for col in self.monaco.columns:
             self.monaco[col] = where(self.monaco[col] < -1, -1, self.monaco[col])
-
         with plt.style.context("seaborn-v0_8-whitegrid"):
             plt.figure(figsize = (14, 7), dpi=300)
             self._plot_line()
             self._title_and_labels_2()
             
-
     def _plot_line(self):
         plt.plot(self.monaco * 100, linewidth = 1)
         
@@ -44,5 +42,4 @@ class Grafico:
         plt.xlabel("Tempo", fontsize=14, fontweight='bold')
         plt.ylabel("Retorno Total (%)", fontsize=14, fontweight='bold')
         plt.title("Simulação", fontsize=16, fontweight='bold')
-
         plt.grid(True, linestyle='--', alpha=0.6)
