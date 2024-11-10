@@ -3,27 +3,34 @@
 O código tem como objetivo simular os retornos de um ativo financeiro usando o método de Monte Carlo, que pode ser usado para calcular a probabilidade de diferentes cenários de preços futuros e para modelar o comportamento de ativos sob diferentes condições de mercado. Esse tipo de simulação é amplamente utilizado em finanças para precificação de derivativos, gestão de risco e projeção de resultados.
 
 ## Como usar
-```python
-import requests
 
-# URL do script do GitHub
-url = 'https://raw.githubusercontent.com/rianlucascs/simulacao-de-monte-carlo/master/Scripts/monte_carlo.py'
+1. Instalação das bibliotecas
+    ```bash
+    python -m pip install -r https://github.com/rianlucascs/simulacao-de-monte-carlo/blob/master/requirements.txt
+    ```
 
-# Baixando o conteúdo do script
-response = requests.get(url)
+2. Acessar os dados
+    ```python
+    import requests
 
-# Executando o conteúdo do script
-exec(response.text)
+    # URL do script do GitHub
+    url = 'https://raw.githubusercontent.com/rianlucascs/simulacao-de-monte-carlo/master/Scripts/monte_carlo.py'
 
-# Agora a classe MonteCarlo está disponível, podemos instanciá-la
-monaco = MonteCarlo('VALE3.SA', '1y')
+    # Baixando o conteúdo do script
+    response = requests.get(url)
 
-# Chamar a simulação com 100 simulações e custo operacional de 0.001
-result = monaco.simulacao(numero_simulacao=100, custo_operacional=0.001)
+    # Executando o conteúdo do script
+    exec(response.text)
 
-# Exibir o resultado
-print(result)
-```
+    # Agora a classe MonteCarlo está disponível, podemos instanciá-la
+    monaco = MonteCarlo('VALE3.SA', '1y')
+
+    # Chamar a simulação com 100 simulações e custo operacional de 0.001
+    result = monaco.simulacao(numero_simulacao=100, custo_operacional=0.001)
+
+    # Exibir o resultado
+    print(result)
+    ```
 
 ## Saídas
 
