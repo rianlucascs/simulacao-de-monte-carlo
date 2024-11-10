@@ -6,7 +6,7 @@ O código tem como objetivo simular os retornos de um ativo financeiro usando o 
 
 1. Instalação das bibliotecas
     ```bash
-    python -m pip install -r https://github.com/rianlucascs/simulacao-de-monte-carlo/blob/master/requirements.txt
+    python -m pip install -r https://raw.githubusercontent.com/rianlucascs/simulacao-de-monte-carlo/master/requirements.txt
     ```
 
 2. Acessar os dados
