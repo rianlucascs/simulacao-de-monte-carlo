@@ -49,7 +49,7 @@ class MonteCarlo:
         df_data['Returns'] = df_data['Adj Close'].pct_change(1)  # Cálculo de retornos diários
         return df_data
 
-    def simulacao(self, numero_simulacao: int = 100, custo_operacional: float = 0.001) -> pd.DataFrame:
+    def simulacao(self, n_simulacao: int = 100, custo_operacional: float = 0.001) -> pd.DataFrame:
         """
         Realiza a simulação de Monte Carlo para os retornos do ativo financeiro.
 
@@ -63,11 +63,21 @@ class MonteCarlo:
         Retorna:
             pd.DataFrame: DataFrame contendo as simulações cumulativas dos retornos ao longo do tempo.
         """
-        df_data = self._returns()  
-        moedas = np.random.randint(0, 2, size = (df_data.shape[0], numero_simulacao))
-        moedas = np.where(moedas == 0, -1, moedas)
-        df_moedas = pd.DataFrame(moedas[:, 0] * df_data['Returns'] - custo_operacional).cumsum()
-        for i in range(1, numero_simulacao):
-            sys.stdout.write(f'\r {i/numero_simulacao*100:.3}%')
-            df_moedas = pd.concat([df_moedas, pd.DataFrame(moedas[: , i] * df_data['Returns'] - custo_operacional).cumsum()], axis=1)
-        return df_moedas
+        retornos = self._returns()  
+        s = np.random.randint(0, 2, size = (retornos.shape[0], n_simulacao))
+        s = np.where(s == 0, -1, s)
+        df_s = pd.DataFrame(s[:, 0] * retornos['Returns'] - custo_operacional).cumsum()
+        for i in range(1, n_simulacao):
+            sys.stdout.write(f'\r {i / n_simulacao * 100:.3}%')
+            df_s = pd.concat(
+                [
+                    df_s, 
+                    pd.DataFrame(
+                        s[: , i] * retornos['Returns'] - custo_operacional
+                        ).cumsum()
+                    ], 
+                    axis=1)
+        return df_s
+    
+MonteCarlo('VALE3.SA', period='2y').simulacao()
+
