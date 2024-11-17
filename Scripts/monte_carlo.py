@@ -79,5 +79,5 @@ class MonteCarlo:
                     axis=1)
         return df_s
     
-MonteCarlo('VALE3.SA', period='2y').simulacao()
+
 
