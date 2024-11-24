@@ -79,7 +79,7 @@ class MonteCarlo:
                     axis=1)
         return df_s
     
-    def loc_simulacao_monte_carlo(self, simulacao, column_number=1):
+    def loc_sim(self, simulacao, column_number=1):
         """
         Localiza uma coluna específica em um DataFrame de simulações de Monte Carlo.
 
