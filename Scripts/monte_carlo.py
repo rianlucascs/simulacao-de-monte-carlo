@@ -79,5 +79,21 @@ class MonteCarlo:
                     axis=1)
         return df_s
     
+    def loc_simulacao_monte_carlo(self, simulacao, column_number=1):
+        """
+        Localiza uma coluna específica em um DataFrame de simulações de Monte Carlo.
 
+        A função seleciona e retorna uma coluna do DataFrame de simulações, representando
+        uma trajetória específica dos retornos simulados.
+
+        Parâmetros:
+            simulacao (pd.DataFrame): DataFrame contendo os resultados das simulações de Monte Carlo.
+                Cada coluna representa uma trajetória simulada de retornos.
+            column_number (int): Número da coluna a ser localizada. O índice é baseado em zero.
+                Padrão: 1.
+
+        Retorna:
+            pd.Series: Série contendo os valores da coluna especificada.
+        """
+        return simulacao.iloc[:, column_number]
 
